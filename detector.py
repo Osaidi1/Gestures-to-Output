@@ -3,6 +3,9 @@ import time
 import mediapipe as mp
 import cv2
 import pyautogui
+from pynput.keyboard import Key, Controller
+
+keyboard = Controller()
 
 mp_hands = mp.solutions.hands
 mp_draw = mp.solutions.drawing_utils
@@ -54,6 +57,8 @@ def main():
                     index_tip = hand_landmarks.landmark[8]
                     thumb_tip = hand_landmarks.landmark[4]
                     middle_tip = hand_landmarks.landmark[9]
+                    ring_tip = hand_landmarks.landmark[10]
+                    pinky_tip = hand_landmarks.landmark[11]
 
                     cx = sum(hand_landmarks.landmark[id].x for id in points_ids) / len(points_ids)
                     cy = sum(hand_landmarks.landmark[id].y for id in points_ids) / len(points_ids)
@@ -78,15 +83,27 @@ def main():
                     ix, iy = int(index_tip.x * w), int(index_tip.y * h)
                     tx, ty = int(thumb_tip.x * w), int(thumb_tip.y * h)
                     mx, my = int(middle_tip.x * w), int(middle_tip.y * h)
+                    rx, ry = int(ring_tip.x * w), int(ring_tip.y * h)
+                    px, py = int(pinky_tip.x * w), int(pinky_tip.y * h)
 
-                    pinch_distance = math.hypot(ix - tx, iy - ty)
-                    left_pinch_distance = math.hypot(ix - mx, iy - my)
+                    t_to_i_pinch_distance = math.hypot(ix - tx, iy - ty)
+                    t_to_m_pinch_distance = math.hypot(mx - tx, my - ty)
+                    t_to_r_pinch_distance = math.hypot(rx - tx, ry - ty)
+                    t_to_p_pinch_distance = math.hypot(px - tx, py - ty)
 
-                    if left_pinch_distance < PINCH_START:
+                    if t_to_i_pinch_distance < PINCH_START:
+                        pyautogui.rightClick()
+
+                    if t_to_m_pinch_distance < PINCH_START:
                         pyautogui.leftClick()
 
-                    if pinch_distance < PINCH_START:
-                        pyautogui.click()
+                    if t_to_r_pinch_distance < PINCH_START:
+                        keyboard.press("a")
+                        keyboard.release("a")
+
+                    if t_to_p_pinch_distance < PINCH_START:
+                        keyboard.press("b")
+                        keyboard.release("b")
 
             cv2.imshow("Image", img)
 
