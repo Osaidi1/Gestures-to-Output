@@ -3,14 +3,7 @@ import time
 import mediapipe as mp
 import cv2
 import pyautogui
-import tkinter as tk
-from PIL import Image, ImageTk
-from tkinter import ttk
-from pynput.keyboard import Controller
-
-keyboard = Controller()
-
-root = tk.Tk()
+import keyboard
 
 mp_hands = mp.solutions.hands
 mp_draw = mp.solutions.drawing_utils
@@ -25,7 +18,7 @@ points_ids = [0, 5, 9, 13, 17]
 
 dead_zone = 15
 
-PINCH_START = 20
+PINCH_START = 25
 
 def main():
     prev_x, prev_y = screen_width / 2, screen_height / 2
@@ -109,7 +102,7 @@ def main():
 
             cv2.imshow("Showing Camera", img)
 
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            if cv2.waitKey(1) & keyboard.is_pressed("escape"):
                 break
 
     cap.release()
