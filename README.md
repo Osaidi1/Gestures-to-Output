@@ -3,7 +3,7 @@ Move your MOUSE with your HANDS and a CAMERA
 
 ## How to USE  
 1. Run the File to start the Program (It may take a Few Seconds to Open)  
-2. Put your hand almost 1 feet away from the camera to have a good experience!  
+2. Put your hand almost 2 feet away from the camera to have a good experience!  
 3. Try to keep your palm facing towards the camera with your fingers apart!  
 4. Use hand Gestures that are Stated Below!  
 5. To Close the program, simply press Esc!  
