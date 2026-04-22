@@ -8,6 +8,13 @@ Move your MOUSE with your HANDS and a CAMERA
 4. Use hand Gestures that are Stated Below!  
 5. To Close the program, simply press Esc!  
 6. Have Fun  
+
+## Important Info
+1. You must have a camera that works before starting the Program.
+2. The Program takes almost 30 seconds to open.
+3. The Program has some problems with the mouse going to the far edges of the screen.
+4. The Program does not store any info at all.
+5. The Program works offline as well.
   
 ## Controls  
 1. Move your hand around to Move your Mouse  
@@ -18,7 +25,3 @@ Move your MOUSE with your HANDS and a CAMERA
 
 ## Disclosure
 A little bit of ai was used to assist in the development of this project
-
-
-The source code is also present in this same repository! 
-Please use a venv with the libraries mentioned in requirements.txt   
